@@ -180,7 +180,7 @@ const DEPS = {
   rodeios: [['categorias', 'rodeioId'], ['inscricoes', 'rodeioId'], ['lancamentos', 'rodeioId'], ['despesas', 'rodeioId'], ['receitas', 'rodeioId'], ['duplas', 'rodeioId']]
 };
 const NAV = [['painel', 'Painel inicial'], ['rodeios', 'Rodeios'], ['competidores', 'Competidores'], ['categorias', 'Categorias e modalidades'], ['inscricoes', 'Inscrições e planilhas'],
-  ['duplas', 'Duplas e equipes'], ['lancamentos', 'Pagamentos'], ['despesas', 'Despesas'], ['receitas', 'Outras receitas'], ['relatorios', 'Relatórios'], ['usuarios', 'Usuários'], ['config', 'Configurações e backup']];
+  ['duplas', 'Duplas e equipes'], ['lancamentos', 'Pagamentos'], ['despesas', 'Despesas'], ['receitas', 'Outras receitas'], ['sumulas', 'Súmulas MTG/SC'], ['relatorios', 'Relatórios'], ['usuarios', 'Usuários'], ['config', 'Configurações e backup']];
 
 /* ---------- utilitarios de celula ---------- */
 function raw(c, r) {
@@ -430,13 +430,14 @@ function render() {
   const c = $('#conteudo');
   if (cur === 'painel') c.innerHTML = painel();
   else if (cur === 'relatorios') c.innerHTML = relatorios();
+  else if (cur === 'sumulas') c.innerHTML = sumulasHtml();
   else if (cur === 'config') c.innerHTML = config();
   else c.innerHTML = tabela(cur);
 }
 
 /* ---------- eventos ---------- */
 const cont = $('#conteudo');
-window.addEventListener('hashchange', () => { cur = location.hash.slice(1) || 'painel'; if (!MOD[cur] && !['painel', 'relatorios', 'config'].includes(cur)) cur = 'painel'; render(); });
+window.addEventListener('hashchange', () => { cur = location.hash.slice(1) || 'painel'; if (!MOD[cur] && !['painel', 'relatorios', 'config', 'sumulas'].includes(cur)) cur = 'painel'; render(); });
 $('#modal').addEventListener('mousedown', e => { if (e.target.id === 'modal') fechar(); });
 
 cont.addEventListener('click', e => {
@@ -483,5 +484,5 @@ cont.addEventListener('dblclick', e => {
 });
 
 cur = location.hash.slice(1) || 'painel';
-if (!MOD[cur] && !['painel', 'relatorios', 'config'].includes(cur)) cur = 'painel';
+if (!MOD[cur] && !['painel', 'relatorios', 'config', 'sumulas'].includes(cur)) cur = 'painel';
 render();

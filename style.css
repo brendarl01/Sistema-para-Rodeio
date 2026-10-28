@@ -60,3 +60,24 @@ td input,td select{width:100%;padding:3px;border:1px solid var(--ac);border-radi
 .rel{display:flex;gap:8px;flex-wrap:wrap}
 @media(max-width:800px){body{flex-direction:column}.side{width:100%;height:auto;position:static}nav{display:flex;overflow:auto}nav a{white-space:nowrap}.form{grid-template-columns:1fr}}
 @media print{.side,.top,.bar,.pag,.aviso,thead tr.flt{display:none!important}.wrap{max-height:none;border:0}body{background:#fff}}
+
+/* Súmulas MTG/SC */
+.sm{table-layout:fixed;font-size:12px;background:#fff;margin:0 auto}
+.sm td{height:24px;padding:0 4px;border:1px solid #9aa7b8;white-space:nowrap}
+.sm tbody tr,.sm tbody tr:hover{background:transparent}
+.sm tr.sp td{height:6px;padding:0;border:0}
+.sm td.h{background:var(--head);font-weight:700}
+.sm td.ac{text-align:center}.sm td.ar{text-align:right}
+.sm td.tit{font-size:16px;font-weight:700;text-align:center;height:34px;border:0}
+.sm td.nb{border:0;background:transparent}
+.sm td.bx{padding:0}
+.sm td.cl{background:#f6f9fc;font-weight:700;text-align:center}
+.sm .fl{display:flex;align-items:center;gap:5px;height:100%}
+.sm .fl span{font-size:11px;color:#3b4859;white-space:nowrap}
+.sm .fl.vt{flex-direction:column;align-items:stretch;gap:0}
+.sm input{border:0;background:transparent;width:100%;min-width:0;font:inherit;padding:2px;text-align:inherit;outline:0}
+.sm td.bx input{text-align:center}
+.sm input:focus{background:#fff8d6}
+.bar select{padding:7px;border:1px solid var(--line);border-radius:4px;background:#fff}
+.sm-wrap{padding:10px}
+@media print{@page{size:A4;margin:8mm}.sm{font-size:10px}.sm td{border-color:#000}.sm tr.sp td,.sm td.nb,.sm td.tit{border:0}.sm-wrap{padding:0}}
