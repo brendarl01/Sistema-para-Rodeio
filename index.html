@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planilha Digital – Inscrições Secretaria</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🐂 <span>Planilha digital OFF-LINE</span><small>Inscrições · Secretaria</small></div>
+
+    <div class="tabs">
+      <button class="tab active" data-fase="classificatoria">CLASSIFICATÓRIA</button>
+      <button class="tab" data-fase="final">FINAL</button>
+    </div>
+
+    <div class="tools">
+      <input id="busca" type="search" placeholder="🔍 Buscar nome, cavalo, inscrição...">
+      <button id="btnNarrador" class="btn ghost" title="Modo somente leitura">🎙 Narrador</button>
+      <button id="btnMenu" class="btn ghost">⚙</button>
+      <div id="menu" class="menu hidden">
+        <button id="btnExportCsv">⬇ Exportar CSV (Excel)</button>
+        <button id="btnBackup">💾 Backup (.json)</button>
+        <label class="menu-item">⬆ Restaurar backup<input id="fileRestore" type="file" accept=".json" hidden></label>
+        <button id="btnDemo">🧪 Carregar dados de exemplo</button>
+        <button id="btnLimpar" class="danger">🗑 Limpar tudo</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="chips">
+    <span class="chip blue">PREMIAÇÃO</span>
+    <span class="chip green">ARMADAS <b id="cntArmadas">0</b></span>
+    <span class="chip pink">PENEIRAS <b id="cntPeneiras">0</b></span>
+    <span class="stepper">
+      <button id="penMais" class="btn mini">+</button>
+      <span>Peneira</span>
+      <button id="penMenos" class="btn mini">−</button>
+    </span>
+    <span class="chip gray">ELIMINADOS <b id="cntElim">0</b></span>
+    <button id="btnSimular" class="btn ghost small" title="Simula inscrição vinda do site online">📡 Simular inscrição online</button>
+    <button id="btnOnline" class="btn ghost small">🔔 Atualizações do online <span id="badge" class="badge hidden">0</span></button>
+  </section>
+
+  <main>
+    <form id="formAdd" class="add">
+      <input id="fNome1" placeholder="Competidor 1 (cabeceiro)" required>
+      <input id="fNome2" placeholder="Competidor 2 (pegador)" required>
+      <input id="fEntidade" placeholder="Entidade / Patrocinador / Cavalo">
+      <select id="fForca">
+        <option>A</option><option>B</option><option selected>C</option><option>D</option>
+      </select>
+      <button class="btn primary">+ Adicionar armada</button>
+    </form>
+
+    <div class="table-wrap">
+      <table id="tabela">
+        <thead>
+          <tr>
+            <th>INSCRIÇÃO</th>
+            <th>CLASSIF.</th>
+            <th>ENTIDADE | PATROCINADOR | CAVALO<br><small>NOME</small></th>
+            <th>FORÇA</th>
+            <th>1</th><th>2</th><th>3</th>
+            <th>ACERTOS</th>
+            <th>TOTAL</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="corpo"></tbody>
+      </table>
+      <p id="vazio" class="vazio hidden">Nenhuma armada cadastrada ainda. Adicione acima ou carregue os dados de exemplo.</p>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <span id="modoLabel">MODO EDIÇÃO</span>
+    <span>Total armadas: <b id="totalArmadas">0</b></span>
+    <span id="status">💾 Salvo localmente</span>
+  </footer>
+
+  <aside id="painelOnline" class="painel hidden">
+    <h3>ATUALIZAÇÕES DO ONLINE <button id="fecharPainel" class="btn mini">✕</button></h3>
+    <ul id="listaOnline"></ul>
+  </aside>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
